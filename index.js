@@ -12,6 +12,9 @@ app.use("/todo", userRoutes)
 
 
 
-mongoose.connect(process.env.DB_STRING).then(app.listen(process.env.PORT, () => {
+mongoose.connect(process.env.DB_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`);
 })).catch(err => console.log(err))
